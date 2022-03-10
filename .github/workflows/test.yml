@@ -17,5 +17,7 @@ jobs:
         env
       env:
         DRY: ${{ github.event.inputs.dry }}
-        IS_DEFAULT: ${{ inputs.github.ref != format('refs/heads/{0}', github.event.repository.default_branch ) }}
+        REF: ${{ inputs.github.ref }}
+        DEFAULT: ${{ format('refs/heads/{0}', github.event.repository.default_branch ) }}
+        NOT_DEFAULT: ${{ inputs.github.ref != format('refs/heads/{0}', github.event.repository.default_branch ) }}
         RESULT: ${{ github.event.inputs.dry || inputs.github.ref != format('refs/heads/{0}', github.event.repository.default_branch ) }}
